@@ -1,0 +1,3 @@
+package org.example.contestrunner.model;
+
+public enum Verdict { PENDING, RUNNING, ACCEPTED, WRONG_ANSWER, TIME_LIMIT_EXCEEDED, RUNTIME_ERROR, COMPILATION_ERROR, SYSTEM_ERROR }

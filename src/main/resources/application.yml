@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    defer-datasource-initialization: true   # <-- add this
+
+  h2:
+    console:
+      enabled: true
+
+  sql:
+    init:
+      mode: never
+      data-locations: classpath:data-h2.sql
+
+app:
+  worker:
+    enabled: false
+
+  judge:
+    image: contest-runner:latest
+    timeLimitMs: 2000
+    memoryLimitMb: 256
+    cpuLimit: "0.5"
+    workdirHost: /tmp/judge-work
+    dockerBinary: docker
+
+debug: true
+logging:
+  level:
+    root: INFO
+    org.springframework: DEBUG
